@@ -30,7 +30,7 @@ module LinkedinJobs
   end
 
   def company_description(link)
-    job_link = Nokogiri::HTML(link))
+    job_link = Nokogiri::HTML(link)
     job_link.css('div.description__text').text
   end
 end

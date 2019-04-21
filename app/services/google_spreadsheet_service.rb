@@ -1,16 +1,16 @@
-module SpreadsheetReader
+class GoogleSpreadsheetService
   require 'google/apis/sheets_v4'
 
   RANGE = 'Sheet1!A1:D5'.freeze
 
+  def initialize; end
+
   def read
     url = "https://sheets.googleapis.com/v4/spreadsheets/#{ENV['SPREADSHEET_ID']}/values/#{RANGE}?majorDimension=ROWS"
-    request = HTTParty.get(url, headers: { 'Authorization' => "Bearer #{ENV['ACCESS_TOKEN']}" })
+    HTTParty.get(url, headers: { 'Authorization' => "Bearer #{ENV['ACCESS_TOKEN']}" })
   end
 
   def write
-
-
     service = Google::Apis::SheetsV4::SheetsService.new
 
     service.authorization = ENV['ACCESS_TOKEN']
